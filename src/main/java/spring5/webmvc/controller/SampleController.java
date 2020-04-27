@@ -21,7 +21,7 @@ public class SampleController {
 
     @GetMapping("/events/form/name")
     public String getName(Model model) {
-        model.addAttribute("events", new Events("디디", 10));
+        model.addAttribute("events", new Events("디디",  10));
         return "events/form-name";
     }
 
