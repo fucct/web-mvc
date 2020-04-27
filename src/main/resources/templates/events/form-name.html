@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Events</title>
+</head>
+<body>
+<form action="#" th:action="@{/events/form/name}" method="post" th:object="${events}">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
+    <input type="text" title="name" th:field="*{name}"/>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>
