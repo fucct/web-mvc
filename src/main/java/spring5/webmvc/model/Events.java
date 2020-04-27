@@ -1,5 +1,6 @@
 package spring5.webmvc.model;
 
+import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class Events {
+
+    private Integer id;
 
     @NotBlank
     private String name;

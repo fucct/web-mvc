@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import spring5.webmvc.model.Events;
+import spring5.webmvc.validator.EventsValidator;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -19,9 +21,15 @@ public class SampleController {
 
     private final List<Events> eventList = new ArrayList<>();
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setDisallowedFields("id");
+        binder.setValidator(new EventsValidator());
+    }
+
     @GetMapping("/events/form/name")
     public String getName(Model model) {
-        model.addAttribute("events", new Events("디디", 10));
+        model.addAttribute("events", new Events(1, "디디", 10));
         return "events/form-name";
     }
 
