@@ -49,6 +49,7 @@ public class SampleController {
         eventList.add(events);
         redirectAttributes.addAttribute("name", events.getName());
         redirectAttributes.addAttribute("limit", events.getLimit());
+        redirectAttributes.addFlashAttribute("newEvent", events);
         sessionStatus.setComplete();
 
         return "redirect:/events/list";
