@@ -2,7 +2,6 @@ package spring5.webmvc.model;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
 

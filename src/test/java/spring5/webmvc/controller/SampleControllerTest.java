@@ -9,8 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 class SampleControllerTest {
@@ -26,11 +26,11 @@ class SampleControllerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1, 2, 3, 4, 5})
     void get2(Integer id) throws Exception {
         mockMvc.perform(get("/events/" + id))
                 .andExpect(status().isOk())
-                .andExpect(content().string("hello "+id));
+                .andExpect(content().string("hello " + id));
     }
 
     @Test
@@ -42,7 +42,7 @@ class SampleControllerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3,4,5})
+    @ValueSource(ints = {1, 2, 3, 4, 5})
     void delete1(Integer id) throws Exception {
         mockMvc.perform(delete("/events/" + id))
                 .andExpect(status().isOk())

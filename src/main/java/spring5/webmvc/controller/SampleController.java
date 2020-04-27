@@ -17,11 +17,11 @@ import java.util.List;
 @SessionAttributes("events")
 public class SampleController {
 
-    private List<Events> eventList = new ArrayList<>();
+    private final List<Events> eventList = new ArrayList<>();
 
     @GetMapping("/events/form/name")
     public String getName(Model model) {
-        model.addAttribute("events", new Events("디디",  10));
+        model.addAttribute("events", new Events("디디", 10));
         return "events/form-name";
     }
 

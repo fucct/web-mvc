@@ -9,8 +9,8 @@
     <h2 th:text="${message}"></h2>
 </div>
 
-<form action="#" method="POST" enctype="multipart/form-data" th:action="#{/file}">
-    File: <input type="file" name="file"/>
+<form action="#" enctype="multipart/form-data" method="POST" th:action="#{/file}">
+    File: <input name="file" type="file"/>
     <input type="submit" value="Upload">
 </form>
 </body>

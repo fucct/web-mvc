@@ -25,13 +25,13 @@ public class FileController {
     private ResourceLoader resourceLoader;
 
     @GetMapping("/file")
-    public String fileUploadForm(Model model){
+    public String fileUploadForm(Model model) {
         return "files/index";
     }
 
     @PostMapping("/file")
     public String fileUpload(@RequestParam MultipartFile file,
-                             RedirectAttributes attributes){
+                             RedirectAttributes attributes) {
         //save
         String message = file.getOriginalFilename() + " is uploaded";
         attributes.addFlashAttribute("message", message);
@@ -45,9 +45,9 @@ public class FileController {
         String mediaType = new Tika().detect(file);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +
-                        resource.getFilename()+"\"")
+                        resource.getFilename() + "\"")
                 .header(HttpHeaders.CONTENT_TYPE, mediaType)
-                .header(HttpHeaders.CONTENT_LENGTH, file.length()+"")
+                .header(HttpHeaders.CONTENT_LENGTH, file.length() + "")
                 .body(resource);
     }
 }

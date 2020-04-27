@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class EventService {
 
-    public List<Event> getEvents(){
+    public List<Event> getEvents() {
         Event event1 = Event.builder()
                 .name("스프링 웹 MVC 스터디 1차")
                 .limitOfEnrollment(5)
