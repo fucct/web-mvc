@@ -8,6 +8,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.w3c.dom.events.EventException;
 import spring5.webmvc.model.Events;
 import spring5.webmvc.validator.EventsValidator;
 
@@ -20,6 +21,13 @@ import java.util.List;
 public class SampleController {
 
     private final List<Events> eventList = new ArrayList<>();
+
+
+    @ExceptionHandler
+    public String eventHandler(EventsException exception, Model model){
+        model.addAttribute("message", "event error");
+        return "error";
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -35,10 +43,11 @@ public class SampleController {
 
     @PostMapping("/events/form/name")
     public String postName(@Validated @ModelAttribute Events events, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "events/form-name";
-        }
-        return "redirect:/events/form/limit";
+        throw new EventsException("zz");
+//        if (bindingResult.hasErrors()) {
+//            return "events/form-name";
+//        }
+//        return "redirect:/events/form/limit";
     }
 
     @GetMapping("/events/form/limit")
